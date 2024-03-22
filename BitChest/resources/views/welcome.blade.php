@@ -5,243 +5,246 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITCHEST</title>
-
     <style>
-        body {
-            font-family: 'Célias', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FFFFFF;
-            color: #38618C;
-        }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #35A7FF;
+        .section {
+            font-family: "Célias", sans-serif;
             color: #FFFFFF;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        section {
-            padding: 20px;
         }
 
         .section1 {
-            background-image: url('images/barcharts-blue-forex-market.jpg');
+            position: relative;
+            /* Positionnement relatif pour la superposition */
+            background-image: url('images/Fond-alpinisme.webp');
             background-size: cover;
-            text-align: center;
-            padding: 100px 0;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: #FFFFFF;
+            text-align: center;
         }
 
+        .section1::before {
+            content: '';
+            /* Contenu du pseudo-élément */
+            position: absolute;
+            /* Positionnement absolu */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(56, 97, 140, 0.5);
+            /* Couleur du filtre */
+            opacity: 0.1;
+            /* Opacité du filtre */
+            z-index: 1;
+            /* Assure que le filtre est en arrière-plan */
+        }
+
+        .content {
+            position: relative;
+            /* Positionnement relatif pour placer le texte au-dessus du filtre */
+            z-index: 2;
+            /* Assure que le texte est en premier plan */
+            max-width: 800px;
+        }
+
+        .title {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+        }
+
+
         .section2 {
-            display: flex;
-            justify-content: space-around;
-            background-color: #38618C;
-            color: #FFFFFF;
+            background-color: #FFFFFF;
+            /* Fond blanc */
+            color: #38618C;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .section2 h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .section2 p {
+            font-size: 1.2em;
         }
 
         .section2 img {
-            height: 300px;
-            width: 300px;
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
         }
 
         .section3 {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            /* Centrer verticalement */
-            text-align: center;
-            /* Centrer horizontalement */
-        }
-
-        .section3 img {
-            height: 200px;
-            width: 200px;
-            margin-top: 20px;
-            /* Ajouter un espacement par rapport au texte au-dessus */
-        }
-
-
-        footer {
-            text-align: center;
             background-color: #35A7FF;
             color: #FFFFFF;
-        }
-
-        #footer1 {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        footer img {
-            height: 50px;
-            width: 50px;
-        }
-
-        #footer1 ul {
-            list-style: none;
-        }
-
-        #footer1 h4 {
+            padding: 100px 20px;
             text-align: center;
         }
 
-        #footer1 ul {
-            text-align: left;
+        .section3 h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
 
-        #footer1 ul li {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        #footer1 ul.images {
+        .card-container {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-evenly;
         }
 
-        #footer1 ul.images li {
-            flex-basis: 30%;
+        .card {
+            width: 150px;
+            /* Ajustez la largeur selon vos besoins */
+            background-color: #FFFFFF;
+            /* Couleur de fond des cartes */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Ombre légère */
         }
+
+        .card img {
+            width: 100%;
+            /* Pour s'assurer que l'image s'adapte correctement */
+            border-radius: 5px;
+        }
+
+        .card p {
+            color: #38618C;
+            /* Couleur de texte des cartes */
+            font-family: "Célias", sans-serif;
+            /* Nouvelle typographie */
+        }
+
+        .carousel {
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
+            /* Ajustez la hauteur selon vos besoins */
+            position: relative;
+            background-color: #FFFFFF;
+            color: #FFFFFF;
+            /* Nouvelle couleur de texte */
+            font-family: "Célias", sans-serif;
+            /* Nouvelle typographie */
+        }
+
+        .carousel .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel .slide {
+            flex: 0 0 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: #38618C;
+            /* Couleur bleu foncé pour les slides */
+            color: #FFFFFF;
+        }
+        .carousel h2 {
+    color: #38618C; /* Texte en bleu foncé */
+}
+
     </style>
 </head>
 
 <body>
-    <header>
-        <img src="images/bitchest_logo.png" alt="logo de bitchest" style="height: 75px; width: 150px">
-        <nav>
-            <ul>
-                <li><a href="#">accueil</a></li>
-                <li><a href="#">à propos de nous</a></li>
-                <li><a href="./website/marche.blade.php">marchés</a></li>
-                <li><a href="#">contacts</a></li>
-                <li><a href="#">actualités</a></li>
-            </ul>
-        </nav>
-        <div>
-            <input type="search" name="search" id="search">
-            <button>recherche</button>
+    @include('layouts.header')
+
+    <section class="section">
+        <div class="section1">
+            <div class="content">
+                <h1 class="title">Explorez d'abord, puis agissez</h1>
+                <p class="subtitle">Les décisions de trading les plus avisées sont celles qui sont précédées d'une analyse approfondie et suivies d'une action délibérée.</p>
+            </div>
         </div>
 
-        @if (Route::has('login'))
-        <nav class="-mx-3 flex flex-1 justify-end">
-            @auth
-            <a href="{{ url('/dashboard') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                Dashboard
-            </a>
-            @else
-            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white" style="color: #FFFFFF; text-decoration: none;">
-                Log in
-            </a>
-            @endauth
-        </nav>
-        @endif
-    </header>
+        <div class="section2">
+            <h1>Explorez de nouveaux horizons dans le monde des marchés financiers</h1>
+            <p>Rejoignez une communauté de 50 millions de traders et investisseurs qui tracent leur propre chemin <br>
+                vers l'avenir.</p>
+            <img src="images/1-trading-what-is-it.png" alt="">
+        </div>
 
-    <section class="section1">
-        <h1>BIENVENU SUR L'UNE DES MEILLEURS PLATEFORMES DE TRADING AU MONDE</h1>
-        <img src="images/bitchest_logo.png" alt="logo de bitchest">
+        <div class="section3">
+            <h1>Bitchest <br> La nouvelle ère du trading</h1>
+            <div class="card-container">
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>des millions de personnes rejoignent chaque mois notre platforme</p>
+                </div>
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>Bitchest utilise une technologie de pointe pour offrir une plateforme de trading intuitive et sécurisée, garantissant une expérience transparente et fiable pour les utilisateurs.</p>
+                </div>
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>Bitchest utilise une technologie de pointe pour offrir une plateforme de trading intuitive et sécurisée, garantissant une expérience transparente et fiable pour les utilisateurs.</p>
+                </div>
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>Bitchest se distingue par son engagement envers l'innovation continue, en introduisant régulièrement de nouvelles fonctionnalités et des outils avancés pour aider les traders à prendre des décisions éclairées dans un marché en constante évolution.</p>
+                </div>
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>Bitchest rassemble une communauté dynamique et engagée de traders et d'investisseurs passionnés par les cryptomonnaies, favorisant ainsi l'échange de connaissances, d'idées et de stratégies pour une croissance collective.</p>
+                </div>
+
+                <div class="card">
+                    <img src="chemin/vers/votre/image.jpg" alt="Description de l'image">
+                    <p>Avec un accent particulier sur la transparence et la fiabilité, Bitchest s'efforce de fournir des données précises et en temps réel, ainsi qu'un environnement de trading sécurisé, afin d'instaurer la confiance et la crédibilité dans le monde du trading de cryptomonnaies.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="carousel">
+            <h2 style="text-align: center;">Les avis de quelques-uns de nos utilisateurs</h2>
+            <div class="slides">
+                <div class="slide">Slide 1</div>
+                <div class="slide">Slide 2</div>
+                <div class="slide">Slide 3</div>
+                <div class="slide">Slide 4</div>
+                <div class="slide">Slide 5</div>
+            </div>
+        </div>
     </section>
 
-    <section class="section2">
-        <img src="images/Icon-Decentralized.svg" alt="">
-        <div>
-            <h2>syteme de gestion décentralisé</h2>
-            <p>notre système de gestion décentralisé offre plusieurs avantages</p>
-            <ul>
-                <li>
-                    Transparence accrue : vos transactions sont enregistrées sur un registre distribué, accessible à
-                    tout moment, ce qui garantit une transparence totale et empêche la manipulation de vos
-                    données par un ou quelques acteurs.
-                </li>
-                <li>
-                    Sécurité renforcée : La décentralisation réduit les risques de piratage et de fraude, car
-                    les données ne sont pas stockées sur un serveur central vulnérable aux attaques.
-                </li>
-                <li>
-                    Fiabilité et disponibilité : En éliminant le point de défaillance unique, les systèmes
-                    décentralisés sont plus résilients et moins susceptibles de subir des temps d'arrêt prolongés.
-                </li>
-                <li>
-                    Autonomie des utilisateurs : Chaque utilisateur a un contrôle direct sur ses actifs et
-                    transactions, sans avoir besoin de passer par des intermédiaires ou des tiers de confiance.
-                </li>
-                <li>
-                    Réduction des coûts : En éliminant les frais associés aux tiers de confiance et en automatisant
-                    les processus, les plateformes de trading décentralisées peuvent réduire les coûts pour les
-                    utilisateurs.
-                </li>
-            </ul>
-        </div>
-    </section>
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideWidth = document.querySelector('.slide').clientWidth;
+        let currentIndex = 0;
 
-    <section class="section3">
-        <div>
-            <h2>comme bon nombre de plateformes de trading nous sommes présents sur Discord</h2>
-            <h3>
-                nous vous invitons donc à rejoindre notre serveur quel que soit votre niveau de connaissance et d'expertise
-                dans le trading nous allons y faire de vous un trader chevronné
-            </h3>
-            <a href="https://discord.com/"><img src="images/Discord_Logo_sans_texte.svg.png" alt="logo de discord"></a>
-        </div>
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex === 5) {
+                currentIndex = 0;
+            }
+            slides.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+        }
 
-        <img src="images/serveur discord.jpeg" alt="" style="height: 400px; width: 500px; margin-top: 20px;">
-    </section>
+        setInterval(nextSlide, 3000); // Change de slide toutes les 3 secondes (3000 millisecondes)
+    </script>
 
-
-    <footer>
-        <div id="footer1">
-            <div>
-                <h4>communauté</h4>
-                <ul class="images">
-                    <li><a href="https://discord.com/"><img src="images/Discord_Logo_sans_texte.svg.png" alt="logo de discord"></a></li>
-                    <li><a href="https://telegram.org/"><img src="images/Telegram_logo.svg.webp" alt=""></a></li>
-                    <li><a href="https://twitter.com/"><img src="images/X_logo_2023.svg" alt=""></a></li>
-                    <li><a href="https://www.youtube.com/"><img src="images/Youtube_logo.png" alt="" style="height: 50px; width: 90px;"></a></li>
-                    <li><a href="https://www.instagram.com/"><img src="images/Instagram_icon.png.webp" alt=""></a></li>
-                    <li><a href="https://www.tiktok.com/"><img src="images/logo tiktok.png" alt=""></a></li>
-                    <li><a href="https://www.facebook.com/"><img src="images/Facebook_f_logo_(2019).svg" alt=""></a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>à propos de nous</h4>
-                <ul>
-                    <li><a href="#">qui sommes nous ?</a></li>
-                    <li><a href="#">carrières</a></li>
-                    <li><a href="#">juridique</a></li>
-                    <li><a href="#">condition d'utilisation</a></li>
-                    <li><a href="#">confidentialité</a></li>
-                    <li><a href="#">avis</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>assistance technique</h4>
-                <ul>
-                    <li><a href="#">discuter avec le service client</a></li>
-                    <li><a href="mailto:bitchest_client@gmail.com">contacter le service client</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>FAQ</h4>
-            </div>
-        </div>
-        &copy; BITCHEST {{ now()->year }} - Tous droits réservés.
-    </footer>
+    @include('layouts.footer')
 </body>
 
 </html>
