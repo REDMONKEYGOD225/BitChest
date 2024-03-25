@@ -1,21 +1,23 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use Illuminate\Database\Seeder;
 use App\Models\Wallet;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class WalletSeeder extends Seeder
+class WalletFactory extends Factory
 {
-    public function run()
-    {
-        
-        Wallet::create([
-            'id_user' => 1, 
-            'key_security' => 'your_security_key',
-            'address' => 'your_wallet_address',
-        ]);
+    protected $model = Wallet::class;
 
-        
+    public function definition(): array
+    {
+        return [
+            'id_user' => function () {
+                // Retourne un ID d'utilisateur existant depuis la base de données ou génère un nouveau
+                return \App\Models\User::inRandomOrder()->first()->id ?? \App\Models\User::factory()->create()->id;
+            },
+            'key_security' => $this->faker->sha256, // Exemple de génération d'une clé de sécurité
+            'address' => $this->faker->unique()->ipv6, // Exemple de génération d'une adresse unique
+        ];
     }
 }

@@ -1,23 +1,26 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use Illuminate\Database\Seeder;
 use App\Models\Purchase;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PurchaseSeeder extends Seeder
+class PurchaseFactory extends Factory
 {
-    public function run()
-    {
-        
-        Purchase::create([
-            'id_user' => 1, 
-            'id_crypto' => 1, 
-            'quantity' => 2.5,
-            'price' => 5000.00,
-            'date_achat' => now(),
-        ]);
+    protected $model = Purchase::class;
 
-       
+    public function definition(): array
+    {
+        return [
+            'id_user' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
+            'id_crypto' => function () {
+                return \App\Models\CryptoMonnaie::factory()->create()->id;
+            },
+            'quantity' => $this->faker->randomFloat(4, 0.01, 100),
+            'price' => $this->faker->randomFloat(2, 1, 100),
+            'date_achat' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        ];
     }
 }

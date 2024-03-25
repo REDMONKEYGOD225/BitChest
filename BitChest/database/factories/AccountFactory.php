@@ -1,20 +1,21 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use Illuminate\Database\Seeder;
 use App\Models\Account;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AccountSeeder extends Seeder
+class AccountFactory extends Factory
 {
-    public function run()
-    {
-        
-        Account::create([
-            'id_wallet' => 1, 
-            'sold' => 1000.00,
-        ]);
+    protected $model = Account::class;
 
-    
+    public function definition(): array
+    {
+        return [
+            'id_wallet' => function () {
+                return \App\Models\Wallet::factory()->create()->id;
+            },
+            'sold' => $this->faker->randomFloat(2, 100, 10000), // Solde aléatoire entre 100 et 10000 avec 2 décimales
+        ];
     }
 }

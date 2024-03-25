@@ -1,23 +1,26 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
-use Illuminate\Database\Seeder;
 use App\Models\Sell;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SellSeeder extends Seeder
+class SellFactory extends Factory
 {
-    public function run()
-    {
-        
-        Sell::create([
-            'id_user' => 1, 
-            'id_crypto' => 1,
-            'quantity' => 5.0,
-            'price' => 6000.00,
-            'date_sell' => now(),
-        ]);
+    protected $model = Sell::class;
 
-     
+    public function definition(): array
+    {
+        return [
+            'id_user' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
+            'id_crypto' => function () {
+                return \App\Models\CryptoMonnaie::factory()->create()->id;
+            },
+            'quantity' => $this->faker->randomFloat(4, 0.01, 100),
+            'price' => $this->faker->randomFloat(2, 1, 100),
+            'date_sell' => $this->faker->dateTimeBetween('-1 month', 'now'),
+        ];
     }
 }
