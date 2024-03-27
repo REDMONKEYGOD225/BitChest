@@ -171,7 +171,7 @@
         }
 
         // Récupérer le nom d'utilisateur à partir de la base de données ou de toute autre source
-        var username = "<?php echo $user->username; ?>"; // Assurez-vous de remplacer cette ligne par la manière dont vous récupérez réellement le nom d'utilisateur
+        var username = "<?php echo $user->username; ?>"; 
 
         // Génération du QR code avec le nom d'utilisateur récupéré
         generateRechargeQRCode(username);
