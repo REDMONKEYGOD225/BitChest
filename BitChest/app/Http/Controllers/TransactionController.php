@@ -29,7 +29,7 @@ class TransactionController extends Controller
 
         // Mettre à jour le solde de l'utilisateur en ajoutant le montant rechargé
         $user->sold += $montantRechargementEuros;
-        $user->save();
+        /*$user->save();*/
 
         // Rediriger l'utilisateur avec un message de confirmation
         return redirect()->route('dashboard')->with('success', 'Solde rechargé avec succès.');
